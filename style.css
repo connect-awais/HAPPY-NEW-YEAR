@@ -1,0 +1,300 @@
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap");
+
+/* Fullscreen Styling */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(270deg, 
+        #ff7eb3,   /* Pink */
+        #ff758c,   /* Light Pink */
+        #765d69,   /* Purple */
+        #4a5060,   /* Dark Blue */
+        #1e3c72,   /* Midnight Blue */
+        #ff9a8b,   /* Peach */
+        #ffbc00,   /* Gold */
+        #00bcd4,   /* Cyan */
+        #8e44ad    /* Violet */
+    );
+    background-size: 800% 800%;
+    animation: gradientAnimation 15s ease infinite;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #FFD700;
+}
+
+
+@keyframes gradientAnimation {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+.container {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+}
+
+#particleCanvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    width: 100%;
+    height: 100%;
+}
+
+.text h1, .text h2 {
+    margin: 0;
+    padding: 0;
+    line-height: 1.5;
+    text-shadow: 0 0 20px #FFA500;
+}
+
+#happyNewYear {
+    font-size: 150px;
+    font-family: 'Playfair Display', sans-serif;
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
+    position: relative;
+    text-shadow: 0 0 3px gold, 0 0 8px rgba(255, 215, 0, 0.8);
+    animation: fadeInText 2s ease-in-out;
+    transition: all 0.3s ease-in-out; 
+    animation: colorShift 5s infinite alternate; /* Apply color animation */
+}
+
+@keyframes colorShift {
+    0% {
+        color: #F9D77E; /* Light yellow, stands out on dark backgrounds */
+        text-shadow: 0 0 10px #F9D77E, 0 0 20px #FFA500, 0 0 30px #FF6347; /* Warm glow */
+    }
+    25% {
+        color: #FF6347; /* Tomato red for contrast */
+        text-shadow: 0 0 10px #FF6347, 0 0 20px #FF4500, 0 0 30px #FF1493; /* Red-pink glow */
+    }
+    50% {
+        color: #FF4500; /* Deep orange-red */
+        text-shadow: 0 0 10px #FF4500, 0 0 20px #FFD700, 0 0 30px #FF8C00; /* Gold-orange glow */
+    }
+    75% {
+        color: #FFD700; /* Gold color */
+        text-shadow: 0 0 10px #FFD700, 0 0 20px #FF6347, 0 0 30px #FF1493; /* Golden glow */
+    }
+    100% {
+        color: #00BFFF; /* Sky blue for variety and contrast */
+        text-shadow: 0 0 10px #00BFFF, 0 0 20px #1E90FF, 0 0 30px #87CEFA; /* Blue glow */
+    }
+}
+
+
+#happyNewYear::after {
+    content: '';
+    display: inline-block;
+    width: 2px;
+    height: 1.2em;
+    background-color: gold;
+    position: absolute;
+    animation: blink 0.7s infinite;
+    right: 0;
+}
+
+#happyNewYear:hover {
+    color: orange;
+    text-shadow: 0 0 20px yellow, 0 0 40px orange, 0 0 60px red;
+    transform: scale(1.1); /* Slight zoom effect */
+}
+
+.fade-in {
+    opacity: 0;
+    animation: fadeIn 0.4s forwards ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes blink {
+    0%, 100% {
+        opacity: 1;
+    }
+    50% {
+        opacity: 0;
+    }
+}
+
+/* Adjust for tablets */
+@media (max-width: 768px) {
+    #happyNewYear {
+        font-size: 3rem; /* Reduce font size */
+        text-align: center; /* Center-align text */
+    }
+
+    body {
+        background-color: #002b80; /* Slightly lighter blue for smaller screens */
+    }
+}
+
+/* Adjust for mobile */
+@media (max-width: 480px) {
+    #happyNewYear {
+        font-size: 2rem; /* Further reduce font size */
+        line-height: 1.2; /* Adjust spacing for readability */
+    }
+
+    body {
+        background-color: #003366; /* Another color adjustment */
+    }
+}
+
+/* Year Transition Styling */
+#year {
+    font-size: 8rem;
+    background: linear-gradient(to top, #F9D77E, orange);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  
+    transition: opacity 1s ease-in-out, color 1s ease-in-out;
+    font-weight: bold;
+    /* Reduced text-shadow for less blur */
+    text-shadow: 
+        0 0 0 #FFD700,   /* Inner glow (gold) */
+        0 0 1px #FFA500,   /* Slightly outer glow (orange) */
+        0 0 5px #FF4500;  /* Outer layer glow (red-orange) */
+    animation-fill-mode: forwards;
+    transition: color 1s ease-in-out;
+}
+
+
+
+@keyframes fadeOutYear {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInYear {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+/* Bounce animation for year change */
+@keyframes bounce {
+    0% {
+        transform: scale(1) translateY(0);
+    }
+    25% {
+        transform: scale(1.2) translateY(-10px);
+    }
+    50% {
+        transform: scale(1.1) translateY(10px);
+    }
+    75% {
+        transform: scale(1.1) translateY(-5px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+    }
+}
+
+.confetti-piece {
+    position: absolute;
+    top: 0;
+    width: 10px;
+    height: 10px;
+    animation: confettiFall 2s linear infinite, particleColorChange 3s ease-in-out infinite;
+    opacity: 0;
+    border-radius: 50%;
+}
+
+/* Keyframe animation for confetti fall */
+@keyframes confettiFall {
+    0% {
+        transform: translateY(-100%) rotate(0deg);
+        opacity: 1;
+    }
+    100% {
+        transform: translateY(100vh) rotate(360deg);
+        opacity: 0;
+    }
+}
+
+/* Color changing animation for particles */
+@keyframes particleColorChange {
+    0% {
+        background-color: #F9D77E; /* Light yellow */
+    }
+    20% {
+        background-color: #FF6347; /* Tomato red */
+    }
+    40% {
+        background-color: #FF4500; /* Orange-red */
+    }
+    60% {
+        background-color: #FFD700; /* Gold */
+    }
+    80% {
+        background-color: #00BFFF; /* Sky blue */
+    }
+    100% {
+        background-color: #FF1493; /* Deep pink */
+    }
+}
+
+#confetti {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+}
+
+#fireworks {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Adjustments for mobile */
+@media (max-width: 768px) {
+    #happyNewYear {
+        font-size: 3rem;
+    }
+
+    body {
+        background-color: #002b80;
+    }
+}
+
+@media (max-width: 480px) {
+    #happyNewYear {
+        font-size: 2rem;
+        line-height: 1.2;
+    }
+
+    body {
+        background-color: #003366;
+    }
+}
